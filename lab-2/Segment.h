@@ -18,6 +18,7 @@
 
 class Segment {
 private:
+    int* pointer;
     static int _freeID;
     int _myId;
     Point _a;
@@ -25,98 +26,46 @@ private:
 
 public:
     Segment(const double x1 = 0, const double y1 = 0,
-            const double x2 = 1, const double y2 = 0) {
-      _a = Point(0, 0);
-      _b = Point(1, 0);
-      _myId = _freeID++;
-    };
+            const double x2 = 1, const double y2 = 0);
 
-    Segment(const Point &start, const Point &end) {
-      _a = start;
-      _b = end;
-    };
+    Segment(const Point &start, const Point &end);
 
-    Segment(const Segment &segment) {
-      _a = segment._a;
-      _b = segment._b;
-    };
+    Segment(const Segment &segment);
 
-    ~Segment() {
+    ~Segment();
 
-    };
+    Segment &operator=(const Segment &segment);
 
-    Segment &operator=(const Segment &segment) {
-      _a = segment._a;
-      _b = segment._b;
-      _myId = segment._myId;
-    };
+    const Point &start() const;
 
-    const Point &start() const {
-      return _a;
-    };
+    const Point &end() const;
 
-    const Point &end() const {
-      return _b;
-    };
+    Point &start();
 
-    Point &start() {
-      return _a;
-    };
+    Point &end();
 
-    Point &end() {
-      return _b;
-    };
+    const double &startX() const;
 
-    const double &startX() const {
-      return _a.x();
-    };
+    const double &startY() const;
 
-    const double &startY() const {
-      return _a.y();
-    };
+    const double &endX() const;
 
-    const double &endX() const {
-      return _b.x();
-    };
+    const double &endY() const;
 
-    const double &endY() const {
-      return _b.y();
-    };
+    double &startX();
 
-    double &startX() {
-      return _a.x();
-    };
+    double &startY();
 
-    double &startY() {
-      return _a.y();
-    };
+    double &endX();
 
-    double &endX() {
-      return _b.x();
-    };
+    double &endY();
 
-    double &endY() {
-      return _b.y();
-    };
+    double length() const;
 
-    double length() const {
-      return sqrt(pow((_b.x() - _a.x()), 2) + pow((_b.y() - _a.y()), 2));
-    };
+    double distance(const Point &point) const;
 
-    double distance(const Point &point) const {
-      double A = _a.y() - _b.y();
-      double B = _a.x() - _b.x();
-      double C = _a.y() * _b.x() - _b.y() * _a.x();
-
-      return std::abs((A * point.x() + B * point.y() + C) / sqrt(A * A + B * B));
-    };
-
-    const int getID() const {
-      return _myId;
-    };
+    const int getID() const;
 };
 int Segment::_freeID = 0;
 
-std::ostream &operator<<(std::ostream &os, const Segment &segment) {
-  return os << "[" << segment.start() << ";" << segment.end() << "] ";
-};
+std::ostream &operator<<(std::ostream &os, const Segment &segment);
