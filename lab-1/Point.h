@@ -19,83 +19,41 @@
 
 class Point {
 private:
+    int* pointer;
     static int _freeID;
     int _pointID;
     double _x;
     double _y;
 
 public:
-    Point(double x = 0, double y = 0) {
-      _pointID = _freeID++;
-      _x = x;
-      _y = y;
-    };
+    Point(double x = 0, double y = 0) ;
 
     Point(const Point &);
 
-    ~Point() {
-    };
+    ~Point();
 
-    Point &operator=(const Point &point) {
-      _x = point.x();
-      _y = point.y();
-      _pointID = point.getID();
-    };
+    Point &operator=(const Point &point) ;
 
-    double &x() {
-      return _x;
-    };
+    double &x() ;
 
-    double &y() {
-      return _y;
-    };
+    double &y() ;
 
-    [[nodiscard]] const double &x() const {
-      return _x;
-    };
+    const double &x() const ;
 
-    [[nodiscard]] const double &y() const {
-      return _y;
-    };
+   const double &y() const;
 
-    [[nodiscard]] const int getID() const {
-      return _pointID;
-    };
+    const int getID() const ;
 
-    static int amount() {
-      return _freeID;
-    };
+    static int amount();
 
 };
 
-int Point::_freeID = 0;
+std::ostream &operator<<(std::ostream &os, const Point &point);
 
-std::ostream &operator<<(std::ostream &os, const Point &point) {
-  return os << " (" << point.x() << ", " << point.y() << ") ";
-}
+const Point operator+(const Point &u, const Point &v);
 
-const Point operator+(const Point &u, const Point &v) {
-  return Point(u.x() + v.x(), u.y() + v.y());
-};
+Point operator+=(Point &u, const Point &v);
 
-Point operator+=(Point &u, const Point &v) {
-  u = u + v;
-  return  u + v;
-};
+bool operator==(const Point &u, const Point &v);
 
-bool operator==(const Point &u, const Point &v) {
-  if (u.x() == v.x() && u.y() == v.y()) {
-    return true;
-  } else {
-    return false;
-  }
-};
-
-bool operator!=(const Point &u, const Point &v) {
-  if (u.x() != v.x() || u.y() != v.y()) {
-    return true;
-  } else {
-    return false;
-  }
-};
-
+bool operator!=(const Point &u, const Point &v);
