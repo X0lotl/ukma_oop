@@ -1,6 +1,8 @@
 #include <iostream>
+#include "AComplex.h"
 
 int main() {
-  std::cout << "Hello, World!" << std::endl;
+  AComplex aComplex(1,2);
+  std::cout << aComplex << std::endl;
   return 0;
 }
