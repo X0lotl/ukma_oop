@@ -3,4 +3,4 @@ project(lab_5)
 
 set(CMAKE_CXX_STANDARD 17)
 
-add_executable(lab_5 main.cpp AComplex.cpp AComplex.h)
+add_executable(lab_5 main.cpp AComplex.cpp AComplex.h TComplex.cpp TComplex.h)
