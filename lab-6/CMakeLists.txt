@@ -3,4 +3,4 @@ project(lab_6)
 
 set(CMAKE_CXX_STANDARD 17)
 
-add_executable(lab_6 main.cpp MyString.cpp MyString.h)
+add_executable(lab_6 main.cpp String.cpp String.h)
