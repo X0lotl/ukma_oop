@@ -3,9 +3,6 @@
 //
 #pragma once
 #include <iostream>
-#include <algorithm>
-#include <stdexcept>
-#include <string>
 
 template <typename T>
 class Sequence {
