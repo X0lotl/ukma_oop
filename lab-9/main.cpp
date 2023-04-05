@@ -10,13 +10,13 @@ int main() {
   seq.append(4);
   seq.append(5);
   std::cout << "Тест int послідовності:" << std::endl;
-  std::cout << "Послідовність: ";
-  seq.print();
+  std::cout << "Послідовність: " << seq << std::endl;
 
   seq.remove(3);
+  std::cout << "Послідовність після видалення 3: " << seq << std::endl;
 
-  std::cout << "Послідовність після видалення 3: ";
-  seq.print();
+  seq.removeElementByIndex(0);
+  std::cout << "Послідовність після видалення 1-го елементу (з індексом 0): " << seq << std::endl;
 
   std::cout << "Чи належить елемент 4 до послідовності? " << (seq.contains(4) ? "Так" : "Ні") << std::endl;
   std::cout << "Чи належить елемент 7 до послідовності? " << (seq.contains(7) ? "Так" : "Ні") <<  std::endl;
@@ -32,13 +32,13 @@ int main() {
 
 
   std::cout << "\n\nТест string послідовності:" << std::endl;
-  std::cout << "Послідовність: ";
-  str_seq.print();
+  std::cout << "Послідовність: " << str_seq << std::endl;
 
   str_seq.remove("three");
+  std::cout << "Послідовність після видалення 'three': " << str_seq << std::endl;
 
-  std::cout << "Послідовність після видалення 'three': ";
-  str_seq.print();
+  str_seq.removeElementByIndex(0);
+  std::cout << "Послідовність після видалення 1-го елементу (з індексом 0): " << str_seq << std::endl;
 
   std::cout << "Чи належить елемент 'four' до послідовності? " << (str_seq.contains("four") ? "Так" : "Ні") << std::endl;
   std::cout << "Чи належить елемент 'seven' до послідовності? " << (str_seq.contains("seven") ? "Так" : "Ні") << std::endl;
@@ -56,8 +56,10 @@ int main() {
   std::cout << "Послідовність: " << double_seq << std::endl;
 
   double_seq.remove(3.3);
-
   std::cout << "Послідовність після видалення 3.3: " << double_seq << std::endl;
+
+  double_seq.removeElementByIndex(0);
+  std::cout << "Послідовність після видалення 1-го елементу (з індексом 0): " << double_seq << std::endl;
 
   std::cout << "Чи належить елемент 4.4 до послідовності? " << (double_seq.contains(4.4) ? "Так" : "Ні") << std::endl;
   std::cout << "Чи належить елемент 7.7 до послідовності? " << (double_seq.contains(7.7) ? "Так" : "Ні") << std::endl;

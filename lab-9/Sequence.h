@@ -3,44 +3,79 @@
 //
 #pragma once
 #include <iostream>
-#include "vector"
-#include "algorithm"
+#include <algorithm>
+#include <stdexcept>
+#include <string>
 
 template <typename T>
 class Sequence {
 private:
-  std::vector<T> data;
+  T* data;
+  std::size_t capacity;
+  std::size_t size;
+
+  void resize(std::size_t new_capacity) {
+    T* new_data = new T[new_capacity];
+    for (std::size_t i = 0; i < size; ++i) {
+      new_data[i] = data[i];
+    }
+    delete[] data;
+    data = new_data;
+    capacity = new_capacity;
+  }
 
 public:
-  Sequence() {}
+  Sequence() : data(nullptr), capacity(0), size(0) {}
+
+  // Деструктор
+  ~Sequence() {
+    delete[] data;
+  }
 
   void append(const T& value) {
-    data.push_back(value);
+    if (size == capacity) {
+      resize(capacity == 0 ? 1 : capacity * 2);
+    }
+    data[size++] = value;
   }
 
   bool remove(const T& value) {
-    auto it = std::find(data.begin(), data.end(), value);
-    if (it != data.end()) {
-      data.erase(it);
-      return true;
+    for (std::size_t i = 0; i < size; ++i) {
+      if (data[i] == value) {
+        for (std::size_t j = i; j < size - 1; ++j) {
+          data[j] = data[j + 1];
+        }
+        --size;
+        return true;
+      }
     }
     return false;
   }
 
   bool contains(const T& value) const {
-    return std::find(data.begin(), data.end(), value) != data.end();
+    for (std::size_t i = 0; i < size; ++i) {
+      if (data[i] == value) {
+        return true;
+      }
+    }
+    return false;
   }
 
-  void print() const {
-    for (const auto&elem : data) {
-      std::cout << elem << " ";
+  bool removeElementByIndex(std::size_t index) {
+    if (index >= size) {
+      return false;
     }
-    std::cout << std::endl;
+
+    for (std::size_t i = index; i < size - 1; ++i) {
+      data[i] = data[i + 1];
+    }
+    --size;
+    return true;
   }
 
   friend std::ostream& operator<<(std::ostream& os, const Sequence& seq) {
-    for (const auto& elem : seq.data) {
-      os << elem << " ";
+    for (std::size_t i = 0; i < seq.size; ++i) {
+      os << seq.data[i] << " ";
     }
     return os;
   }
