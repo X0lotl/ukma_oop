@@ -1,6 +1,7 @@
 #include <iostream>
 #include "Cities.h"
 #include "Fraction.h"
+#include "DoubleSingleList.h"
 
 int main() {
   std::cout << "---- Тестування 1 завдання ----" << std::endl;
@@ -97,5 +98,34 @@ int main() {
   std::cout << "f1 as decimal: " << decimal << std::endl;
   std::cout << "f2 (from decimal): " << fraction2 << std::endl;
   std::cout << "f3 (constructed from decimal): " << fraction3 << std::endl;
+
+  std::cout << "\n\n ---- Тестування 7 завдання ----" << std::endl;
+  std::cout << "Тестування завдання неможливе оскільки полягає в створені інтерфейсу (дивіться клас DoubleList)" << std::endl;
+
+  std::cout << "\n\n ---- Тестування 8 завдання ----" << std::endl;
+  DoubleSingleList list;
+
+  list.insertFront(1);
+  list.insertFront(2);
+  list.insertFront(3);
+
+  std::cout << "Список після додавання 1, 2 ,3 вперед списку: " << list << std::endl;
+
+  list.insertBack(0);
+  list.insertBack(-1);
+  list.insertBack(-2);
+
+  std::cout << "Список після додавання 0, -1, -2 в кінець списку: " << list << std::endl;
+
+  list.deleteFront();
+  list.deleteFront();
+
+  std::cout << "Список після видалення перших 2-ох елементів: " << list << std::endl;
+
+  list.deleteBack();
+  list.deleteBack();
+
+  std::cout << "Список після видалення останніх двох: " << list << std::endl;
+
   return 0;
 }
