@@ -67,3 +67,15 @@ void DoubleSingleList::deleteBack() {
 
   delete temp;
 }
+
+int DoubleSingleList::size() const {
+  size_t count = 0;
+  Node* current = head;
+
+  while (current != nullptr) {
+    count++;
+    current = current->next;
+  }
+
+  return count;
+}

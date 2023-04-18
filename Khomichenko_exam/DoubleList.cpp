@@ -5,14 +5,23 @@
 #include "DoubleList.h"
 
 std::ostream& operator<<(std::ostream& os, const DoubleList& list) {
-  list.print(os);
+  if (list.head == nullptr) {
+    os << "List is empty." << std::endl;
+    return os;
+  }
+
+  DoubleList::Node* current = list.head;
+  int count = 0;
+  int maxCount = list.size();
+  while (count < maxCount) {
+    os << current->data << " ";
+    current = current->next;
+    count++;
+  }
+  os << std::endl;
   return os;
 }
 
-void DoubleList::print(std::ostream& os) const {
-  Node* current = head;
-  while (current != nullptr) {
-    os << current->data << " ";
-    current = current->next;
-  }
+int DoubleList::size() const {
+  return listSize;
 }

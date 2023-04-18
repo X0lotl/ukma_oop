@@ -2,6 +2,7 @@
 #include "Cities.h"
 #include "Fraction.h"
 #include "DoubleSingleList.h"
+#include "DoubleCyclingList.h"
 
 int main() {
   std::cout << "---- Тестування 1 завдання ----" << std::endl;
@@ -126,6 +127,32 @@ int main() {
   list.deleteBack();
 
   std::cout << "Список після видалення останніх двох: " << list << std::endl;
+
+
+  std::cout << "\n\n ---- Тестування 9 завдання ---- " << std::endl;
+  DoubleCyclingList cyclingList;
+
+  cyclingList.insertFront(1);
+  cyclingList.insertFront(2);
+  cyclingList.insertFront(3);
+
+  std::cout << "List after inserting front: " << cyclingList << std::endl;
+
+  cyclingList.insertBack(0);
+  cyclingList.insertBack(-1);
+  cyclingList.insertBack(-2);
+
+  std::cout << "List after inserting back: " << cyclingList << std::endl;
+
+  cyclingList.deleteFront();
+  cyclingList.deleteFront();
+
+  std::cout << "List after deleting front: " << cyclingList << std::endl;
+
+  cyclingList.deleteBack();
+  cyclingList.deleteBack();
+
+  std::cout << "List after deleting back: " << cyclingList << std::endl;
 
   return 0;
 }

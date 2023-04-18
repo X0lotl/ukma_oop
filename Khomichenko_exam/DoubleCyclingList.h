@@ -3,16 +3,14 @@
 //
 
 #pragma once
+
 #include "DoubleList.h"
 
-class DoubleSingleList : public DoubleList {
+class DoubleCyclingList : public DoubleList {
 public:
-  ~DoubleSingleList() override;
-
   void insertFront(int value) override;
   void insertBack(int value) override;
+
   void deleteFront() override;
   void deleteBack() override;
-
-  int size() const override;
 };
