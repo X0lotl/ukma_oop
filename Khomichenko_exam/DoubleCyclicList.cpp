@@ -2,10 +2,10 @@
 // Created by x0lotl on 18.04.23.
 //
 
-#include "DoubleCyclingList.h"
+#include "DoubleCyclicList.h"
 
 template <typename T>
-void DoubleCyclingList<T>::insertFront(T value) {
+void DoubleCyclicList<T>::insertFront(T value) {
   Node* newNode = new Node(value);
 
   if (this->head == nullptr) {
@@ -21,12 +21,11 @@ void DoubleCyclingList<T>::insertFront(T value) {
     this->head = newNode;
   }
 
-  // Збільшення розміру списку
   this->listSize++;
 }
 
 template <typename T>
-void DoubleCyclingList<T>::insertBack(T value) {
+void DoubleCyclicList<T>::insertBack(T value) {
   Node* newNode = new Node(value);
 
   if (this->head == nullptr) {
@@ -42,12 +41,11 @@ void DoubleCyclingList<T>::insertBack(T value) {
     this->tail = newNode;
   }
 
-  // Збільшення розміру списку
   this->listSize++;
 }
 
 template <typename T>
-void DoubleCyclingList<T>::deleteFront() {
+void DoubleCyclicList<T>::deleteFront() {
   if (this->head == nullptr) {
     return;
   }
@@ -65,12 +63,11 @@ void DoubleCyclingList<T>::deleteFront() {
 
   delete temp;
 
-  // Зменшення розміру списку
   this->listSize--;
 }
 
 template <typename T>
-void DoubleCyclingList<T>::deleteBack() {
+void DoubleCyclicList<T>::deleteBack() {
   if (this->tail == nullptr) {
     return;
   }
@@ -88,6 +85,5 @@ void DoubleCyclingList<T>::deleteBack() {
 
   delete temp;
 
-  // Зменшення розміру списку
   this->listSize--;
 }

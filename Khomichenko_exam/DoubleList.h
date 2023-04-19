@@ -5,6 +5,7 @@
 #pragma once
 
 #include <iostream>
+#include "City.h"
 
 template<typename T>
 class DoubleList {
@@ -28,13 +29,16 @@ public:
     }
 
     DoubleList<T>::Node* current = list.head;
-    int count = 0;
-    int maxCount = list.size();
-    while (count < maxCount) {
+    bool first_pass = true;
+    int counter = 0;
+
+    while ( (current != list.head || first_pass ) && counter < list.size()) {
       os << current->data << " ";
       current = current->next;
-      count++;
+      first_pass = false;
+      counter++;
     }
+
     os << std::endl;
     return os;
   }
@@ -53,8 +57,9 @@ protected:
   Node *head = nullptr;
   Node *tail = nullptr;
 
-  int listSize;
+  int listSize = 0;
 
 };
 
 template class DoubleList<int>;
+template class DoubleList<City>;

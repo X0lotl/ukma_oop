@@ -75,7 +75,7 @@ void DoubleSingleList<T>::deleteBack() {
 
 template <typename T>
 int DoubleSingleList<T>::size() const {
-  size_t count = 0;
+  int count = 0;
   Node* current = this->head;
 
   while (current != nullptr) {
@@ -84,4 +84,65 @@ int DoubleSingleList<T>::size() const {
   }
 
   return count;
+}
+
+template <typename T>
+const T& DoubleSingleList<T>::get(int index) const {
+  // Перевіряємо коректність індексу
+  if (index < 0 || index >= size()) {
+    throw std::out_of_range("Index out of range");
+  }
+
+  Node* current = this->head;
+  for (int i = 0; i < index; ++i) {
+    current = current->next;
+  }
+  return current->data;
+}
+
+
+template <typename T>
+void DoubleSingleList<T>::insert(const T& data, int index) {
+  // Перевіряємо коректність індексу
+  if (index < 0 || index > size()) {
+    throw std::out_of_range("Index out of range");
+  }
+
+  if (index == 0) {
+    insertFront(data);
+  } else if (index == size()) {
+    insertBack(data);
+  } else {
+    Node* newNode = new Node(data);
+    Node* current = this->head;
+    for (int i = 0; i < index - 1; ++i) {
+      current = current->next;
+    }
+    newNode->next = current->next;
+    newNode->prev = current;
+    current->next->prev = newNode;
+    current->next = newNode;
+  }
+}
+
+template <typename T>
+void DoubleSingleList<T>::remove(int index) {
+  // Перевіряємо коректність індексу
+  if (index < 0 || index >= size()) {
+    throw std::out_of_range("Index out of range");
+  }
+
+  if (index == 0) {
+    deleteFront();
+  } else if (index == size() - 1) {
+    deleteBack();
+  } else {
+    Node* current = this->head;
+    for (int i = 0; i < index; ++i) {
+      current = current->next;
+    }
+    current->prev->next = current->next;
+    current->next->prev = current->prev;
+    delete current;
+  }
 }

@@ -32,11 +32,13 @@ public:
 
 private:
   City* cityArray;
-  City* savingAlphabetSortedArray;
+  City* sortedByAlphabet;
   int size;
   int capacity;
 
   static std::string toUpperString(const std::string& input);
+
+  void updateSortedByAlphabet();
 
   void resizeArray();
 };

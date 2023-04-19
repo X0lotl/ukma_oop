@@ -23,3 +23,8 @@ void City::setName(const std::string& newName) {
 void City::setPopulation(int newPopulation) {
   population = newPopulation;
 }
+
+std::ostream& operator<<(std::ostream& os, const City& city) {
+  os << "Назва міста: " << city.getName() << ", Популяція: " << city.getPopulation();
+  return os;
+}

@@ -18,6 +18,8 @@ public:
   void setName(const std::string& newName);
   void setPopulation(int newPopulation);
 
+  friend std::ostream& operator<<(std::ostream& os, const City& city);
+
 private:
   std::string name;
   int population;

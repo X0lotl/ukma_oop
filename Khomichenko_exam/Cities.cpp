@@ -36,6 +36,7 @@ void Cities::addCity(const City& city) {
   }
   cityArray[index] = city;
   size++;
+  updateSortedByAlphabet();
 }
 
 City& Cities::operator[](int index) {
@@ -73,6 +74,7 @@ void Cities::resizeArray() {
   }
 
   delete[] cityArray;
+
   cityArray = newArray;
   capacity = newCapacity;
 }
@@ -112,15 +114,18 @@ void Cities::sortByPopulationAscending() {
 }
 
 void Cities::sortByAlphabet() {
-  for (int i = 1; i < size; ++i) {
-    City key = cityArray[i];
-    int j = i - 1;
-    std::string keyUpperName = toUpperString(key.getName());
+  for (int i = 0; i < size; ++i) {
+    cityArray[i] = sortedByAlphabet[i];
+  }
+}
 
-    while (j >= 0 && toUpperString(cityArray[j].getName()) > keyUpperName) {
-      cityArray[j + 1] = cityArray[j];
-      --j;
-    }
-    cityArray[j + 1] = key;
+void Cities::updateSortedByAlphabet() {
+
+  City * newArray = new City[size];
+
+  sortedByAlphabet = newArray;
+
+  for (int i = 0; i < size; ++i) {
+     sortedByAlphabet[i] = cityArray[i];
   }
 }

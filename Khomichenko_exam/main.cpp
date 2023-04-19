@@ -1,8 +1,10 @@
 #include <iostream>
 #include "Cities.h"
 #include "Fraction.h"
+#include "DoubleList.h"
 #include "DoubleSingleList.h"
-#include "DoubleCyclingList.h"
+#include "DoubleCyclicList.h"
+#include "CitiesList.h"
 
 int main() {
   std::cout << "---- Тестування 1 завдання ----" << std::endl;
@@ -18,6 +20,8 @@ int main() {
   Cities citiesUsingArray(cityArray, 5);
 
   std::cout << "Таблиця міст:\n" << citiesUsingArray << std::endl;
+
+  std::cout << "2-ий елемент таблиці: " << citiesUsingArray[1] << std::endl;
 
   std::cout << "\n\n ---- Тестування 2 завдання ---- " << std::endl;
 
@@ -134,29 +138,37 @@ int main() {
 
 
   std::cout << "\n\n ---- Тестування 9 завдання ---- " << std::endl;
-  DoubleCyclingList<int> cyclingList;
+  DoubleCyclicList<int> cyclicList;
 
-  cyclingList.insertFront(1);
-  cyclingList.insertFront(2);
-  cyclingList.insertFront(3);
+  cyclicList.insertFront(1);
+  cyclicList.insertFront(2);
+  cyclicList.insertFront(3);
 
-  std::cout << "List after inserting front: " << cyclingList << std::endl;
+  std::cout << "Список після додавання вперед: " << cyclicList << std::endl;
 
-  cyclingList.insertBack(0);
-  cyclingList.insertBack(-1);
-  cyclingList.insertBack(-2);
+  cyclicList.insertBack(0);
+  cyclicList.insertBack(-1);
+  cyclicList.insertBack(-2);
 
-  std::cout << "List after inserting back: " << cyclingList << std::endl;
+  std::cout << "Список після додавання в кінець: " << cyclicList << std::endl;
 
-  cyclingList.deleteFront();
-  cyclingList.deleteFront();
+  cyclicList.deleteFront();
+  cyclicList.deleteFront();
 
-  std::cout << "List after deleting front: " << cyclingList << std::endl;
+  std::cout << "Список після видалення з початку: " << cyclicList << std::endl;
 
-  cyclingList.deleteBack();
-  cyclingList.deleteBack();
+  cyclicList.deleteBack();
+  cyclicList.deleteBack();
 
-  std::cout << "List after deleting back: " << cyclingList << std::endl;
+  std::cout << "Список після видалення з кінця: " << cyclicList << std::endl;
+
+  std::cout << "\n\n ---- Тестування 10 завдання ---- " << std::endl;
+
+  CitiesList<DoubleSingleList<City>> citiesSingleList;
+
+  citiesSingleList.addCity(City("Kyiv", 100));
+
+  std::cout << citiesSingleList << std::endl;
 
   return 0;
 }

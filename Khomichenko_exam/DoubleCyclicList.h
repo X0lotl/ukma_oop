@@ -5,9 +5,10 @@
 #pragma once
 
 #include "DoubleList.h"
+#include "City.h"
 
 template <typename T>
-class DoubleCyclingList : public DoubleList<T> {
+class DoubleCyclicList : public DoubleList<T> {
 public:
   using typename DoubleList<T>::Node;
 
@@ -18,4 +19,5 @@ public:
   void deleteBack() override;
 };
 
-template class DoubleCyclingList<int>;
+template class DoubleCyclicList<int>;
+//template class DoubleCyclicList<City>;
