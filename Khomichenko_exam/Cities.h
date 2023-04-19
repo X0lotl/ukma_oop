@@ -26,10 +26,13 @@ public:
 
   void sortByPopulationDescending();
 
+  void sortByPopulationAscending();
+
   void sortByAlphabet();
 
 private:
   City* cityArray;
+  City* savingAlphabetSortedArray;
   int size;
   int capacity;
 

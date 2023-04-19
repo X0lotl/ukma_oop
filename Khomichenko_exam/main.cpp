@@ -37,7 +37,10 @@ int main() {
   std::cout << "Таблиця відсортована за назвами міст: " << citiesSorted << std::endl;
 
   citiesSorted.sortByPopulationDescending();
-  std::cout << "Таблиця відсотована за популяцією міст: " << citiesSorted << std::endl;
+  std::cout << "Таблиця відсотована за популяцією міст (спадання): " << citiesSorted << std::endl;
+
+  citiesSorted.sortByPopulationAscending();
+  std::cout << "Таблиця вісортована за популяцією міст (зростанння): " << citiesSorted << std::endl;
 
   citiesSorted.sortByAlphabet();
   std::cout << "Повернення до сортування за назвами: " << citiesSorted << std::endl;
@@ -104,7 +107,8 @@ int main() {
   std::cout << "Тестування завдання неможливе оскільки полягає в створені інтерфейсу (дивіться клас DoubleList)" << std::endl;
 
   std::cout << "\n\n ---- Тестування 8 завдання ----" << std::endl;
-  DoubleSingleList list;
+
+  DoubleSingleList<int> list;
 
   list.insertFront(1);
   list.insertFront(2);
@@ -130,7 +134,7 @@ int main() {
 
 
   std::cout << "\n\n ---- Тестування 9 завдання ---- " << std::endl;
-  DoubleCyclingList cyclingList;
+  DoubleCyclingList<int> cyclingList;
 
   cyclingList.insertFront(1);
   cyclingList.insertFront(2);

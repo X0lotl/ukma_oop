@@ -4,73 +4,79 @@
 
 #include "DoubleSingleList.h"
 
-DoubleSingleList::~DoubleSingleList() {
-  while (head != nullptr) {
+template <typename T>
+DoubleSingleList<T>::~DoubleSingleList() {
+  while (this->head != nullptr) {
     deleteFront();
   }
 }
 
-void DoubleSingleList::insertFront(int value) {
+template <typename T>
+void DoubleSingleList<T>::insertFront(T value) {
   Node *newNode = new Node(value);
 
-  if (head == nullptr) {
-    head = tail = newNode;
+  if (this->head == nullptr) {
+    this->head = this->tail = newNode;
   } else {
-    newNode->next = head;
-    head->prev = newNode;
-    head = newNode;
+    newNode->next = this->head;
+    this->head->prev = newNode;
+    this->head = newNode;
   }
 }
 
-void DoubleSingleList::insertBack(int value) {
+template <typename T>
+void DoubleSingleList<T>::insertBack(T value) {
   Node *newNode = new Node(value);
 
-  if (tail == nullptr) {
-    head = tail = newNode;
+  if (this->tail == nullptr) {
+    this->head = this->tail = newNode;
   } else {
-    newNode->prev = tail;
-    tail->next = newNode;
-    tail = newNode;
+    newNode->prev = this->tail;
+    this->tail->next = newNode;
+    this->tail = newNode;
   }
 }
 
-void DoubleSingleList::deleteFront() {
-  if (head == nullptr) {
+template <typename T>
+void DoubleSingleList<T>::deleteFront() {
+  if (this->head == nullptr) {
     return;
   }
 
-  Node *temp = head;
-  head = head->next;
+  Node *temp = this->head;
+  this->head = this->head->next;
 
-  if (head != nullptr) {
-    head->prev = nullptr;
+  if (this->head != nullptr) {
+    this->head->prev = nullptr;
   } else {
-    tail = nullptr;
+    this->tail = nullptr;
   }
 
   delete temp;
 }
 
-void DoubleSingleList::deleteBack() {
-  if (tail == nullptr) {
+template <typename T>
+void DoubleSingleList<T>::deleteBack() {
+  if (this->tail == nullptr) {
     return;
   }
 
-  Node *temp = tail;
-  tail = tail->prev;
+  Node *temp = this->tail;
+  this->tail = this->tail->prev;
 
-  if (tail != nullptr) {
-    tail->next = nullptr;
+  if (this->tail != nullptr) {
+    this->tail->next = nullptr;
   } else {
-    head = nullptr;
+    this->head = nullptr;
   }
 
   delete temp;
 }
 
-int DoubleSingleList::size() const {
+template <typename T>
+int DoubleSingleList<T>::size() const {
   size_t count = 0;
-  Node* current = head;
+  Node* current = this->head;
 
   while (current != nullptr) {
     count++;

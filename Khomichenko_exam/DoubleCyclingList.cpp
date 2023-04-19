@@ -4,86 +4,90 @@
 
 #include "DoubleCyclingList.h"
 
-void DoubleCyclingList::insertFront(int value) {
+template <typename T>
+void DoubleCyclingList<T>::insertFront(T value) {
   Node* newNode = new Node(value);
 
-  if (head == nullptr) {
-    head = newNode;
-    tail = newNode;
+  if (this->head == nullptr) {
+    this->head = newNode;
+    this->tail = newNode;
     newNode->next = newNode;
     newNode->prev = newNode;
   } else {
-    newNode->next = head;
-    newNode->prev = tail;
-    head->prev = newNode;
-    tail->next = newNode;
-    head = newNode;
+    newNode->next = this->head;
+    newNode->prev = this->tail;
+    this->head->prev = newNode;
+    this->tail->next = newNode;
+    this->head = newNode;
   }
 
   // Збільшення розміру списку
-  listSize++;
+  this->listSize++;
 }
 
-void DoubleCyclingList::insertBack(int value) {
+template <typename T>
+void DoubleCyclingList<T>::insertBack(T value) {
   Node* newNode = new Node(value);
 
-  if (head == nullptr) {
-    head = newNode;
-    tail = newNode;
+  if (this->head == nullptr) {
+    this->head = newNode;
+    this->tail = newNode;
     newNode->next = newNode;
     newNode->prev = newNode;
   } else {
-    newNode->next = head;
-    newNode->prev = tail;
-    head->prev = newNode;
-    tail->next = newNode;
-    tail = newNode;
+    newNode->next = this->head;
+    newNode->prev = this->tail;
+    this->head->prev = newNode;
+    this->tail->next = newNode;
+    this->tail = newNode;
   }
 
   // Збільшення розміру списку
-  listSize++;
+  this->listSize++;
 }
 
-void DoubleCyclingList::deleteFront() {
-  if (head == nullptr) {
+template <typename T>
+void DoubleCyclingList<T>::deleteFront() {
+  if (this->head == nullptr) {
     return;
   }
 
-  Node* temp = head;
+  Node* temp = this->head;
 
-  if (head != tail) {
-    head = head->next;
-    head->prev = tail;
-    tail->next = head;
+  if (this->head != this->tail) {
+    this->head = this->head->next;
+    this->head->prev = this->tail;
+    this->tail->next = this->head;
   } else {
-    head = nullptr;
-    tail = nullptr;
+    this->head = nullptr;
+    this->tail = nullptr;
   }
 
   delete temp;
 
   // Зменшення розміру списку
-  listSize--;
+  this->listSize--;
 }
 
-void DoubleCyclingList::deleteBack() {
-  if (tail == nullptr) {
+template <typename T>
+void DoubleCyclingList<T>::deleteBack() {
+  if (this->tail == nullptr) {
     return;
   }
 
-  Node* temp = tail;
+  Node* temp = this->tail;
 
-  if (head != tail) {
-    tail = tail->prev;
-    tail->next = head;
-    head->prev = tail;
+  if (this->head != this->tail) {
+    this->tail = this->tail->prev;
+    this->tail->next = this->head;
+    this->head->prev = this->tail;
   } else {
-    head = nullptr;
-    tail = nullptr;
+    this->head = nullptr;
+    this->tail = nullptr;
   }
 
   delete temp;
 
   // Зменшення розміру списку
-  listSize--;
+  this->listSize--;
 }

@@ -6,11 +6,16 @@
 
 #include "DoubleList.h"
 
-class DoubleCyclingList : public DoubleList {
+template <typename T>
+class DoubleCyclingList : public DoubleList<T> {
 public:
-  void insertFront(int value) override;
-  void insertBack(int value) override;
+  using typename DoubleList<T>::Node;
+
+  void insertFront(T value) override;
+  void insertBack(T value) override;
 
   void deleteFront() override;
   void deleteBack() override;
 };
+
+template class DoubleCyclingList<int>;

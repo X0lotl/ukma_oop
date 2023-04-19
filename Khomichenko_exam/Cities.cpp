@@ -98,6 +98,19 @@ void Cities::sortByPopulationDescending() {
   }
 }
 
+void Cities::sortByPopulationAscending() {
+  for (int i = 1; i < size; ++i) {
+    City key = cityArray[i];
+    int j = i - 1;
+
+    while (j >= 0 && cityArray[j].getPopulation() > key.getPopulation()) {
+      cityArray[j + 1] = cityArray[j];
+      --j;
+    }
+    cityArray[j + 1] = key;
+  }
+}
+
 void Cities::sortByAlphabet() {
   for (int i = 1; i < size; ++i) {
     City key = cityArray[i];
