@@ -3,6 +3,7 @@
 //
 
 #include "CitiesList.h"
+#include "DoubleSingleList.h"
 
 template<typename T>
 void CitiesList<T>::addCity(const City &city) {
@@ -21,23 +22,33 @@ void CitiesList<T>::sortByAlphabet() {
 }
 
 template<typename T>
-void CitiesList<T>::sortByPopulation() {
-  T temp = citiesList;
-  T sortedList;
+void CitiesList<T>::sortByPopulationAscending() {
   int size = citiesList.size();
-
-  for (int i = 0; i < size; ++i) {
-    int minIndex = 0;
-    for (int j = 1; j < temp.size(); ++j) {
-      if (temp.get(j).getPopulation() < temp.get(minIndex).getPopulation()) {
-        minIndex = j;
+  for (int i = 0; i < size - 1; ++i) {
+    for (int j = 0; j < size - i - 1; ++j) {
+      if (citiesList.get(j).getPopulation() > citiesList.get(j + 1).getPopulation()) {
+        City temp = citiesList.get(j);
+        citiesList.remove(j);
+        citiesList.insert(temp, j + 1);
       }
     }
-    sortedList.insertBack(temp.get(minIndex));
-    temp.remove(minIndex);
   }
-  citiesList = sortedList;
 }
+
+template<typename T>
+void CitiesList<T>::sortByPopulationDescending() {
+  int size = citiesList.size();
+  for (int i = 0; i < size - 1; ++i) {
+    for (int j = 0; j < size - i - 1; ++j) {
+      if (citiesList.get(j).getPopulation() < citiesList.get(j + 1).getPopulation()) {
+        City temp = citiesList.get(j);
+        citiesList.remove(j);
+        citiesList.insert(temp, j + 1);
+      }
+    }
+  }
+}
+
 
 template<typename T>
 void CitiesList<T>::updateSortedByAlphabet(const City &city) {
@@ -63,13 +74,25 @@ std::ostream& operator<<(std::ostream& os, const CitiesList<T>& list) {
 }
 
 std::ostream &operator<<(std::ostream &os, const CitiesList<DoubleSingleList<City>> &list) {
-  int size = list.citiesList.size();
-
+  os << "\n[\n";
   for (int i = 0; i < list.citiesList.size(); ++i) {
     os << list.citiesList.get(i);
     if (i != list.citiesList.size() - 1) {
       os << std::endl;
     }
   }
+  os << "\n]";
+  return os;
+}
+
+std::ostream &operator<<(std::ostream &os, const CitiesList<DoubleCyclicList<City>> &list) {
+  os << "\n[\n";
+  for (int i = 0; i < list.citiesList.size(); ++i) {
+    os << list.citiesList.get(i);
+    if (i != list.citiesList.size() - 1) {
+      os << std::endl;
+    }
+  }
+  os << "\n]";
   return os;
 }

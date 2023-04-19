@@ -20,10 +20,15 @@ public:
 
   void sortByPopulation();
 
+  void sortByPopulationDescending();
 
-  friend std::ostream& operator<<(std::ostream& os, const CitiesList<DoubleSingleList<City>>& list);
+  void sortByPopulationAscending();
 
-  friend std::ostream& operator<<(std::ostream& os, const CitiesList<T>& list);
+  friend std::ostream &operator<<(std::ostream &os, const CitiesList<DoubleSingleList<City>> &list);
+
+  friend std::ostream &operator<<(std::ostream &os, const CitiesList<DoubleCyclicList<City>> &list);
+
+  friend std::ostream &operator<<(std::ostream &os, const CitiesList<T> &list);
 
 private:
   T citiesList;
@@ -34,7 +39,8 @@ private:
 
 };
 
-
-
 template
 class CitiesList<DoubleSingleList<City>>;
+
+template
+class CitiesList<DoubleCyclicList<City>>;

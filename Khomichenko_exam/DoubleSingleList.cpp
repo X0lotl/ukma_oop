@@ -86,9 +86,42 @@ int DoubleSingleList<T>::size() const {
   return count;
 }
 
+template<typename T>
+DoubleSingleList<T> &DoubleSingleList<T>::operator=(const DoubleSingleList<T> &other) {
+  if (this != &other) {
+
+    while (this->head != nullptr) {
+      Node *temp = this->head;
+      this->head = this->head->next;
+      delete temp;
+    }
+    this->tail = nullptr;
+
+    int size = other.size();
+    int counter = 0;
+
+    Node *current = other.head;
+    while (current != nullptr && counter < size) {
+      Node *newNode = new Node(current->data);
+
+      if (this->tail == nullptr) {
+        this->head = this->tail = newNode;
+      } else {
+        newNode->prev = this->tail;
+        this->tail->next = newNode;
+        this->tail = newNode;
+      }
+
+      current = current->next;
+      counter++;
+    }
+  }
+  return *this;
+}
+
+
 template <typename T>
 const T& DoubleSingleList<T>::get(int index) const {
-  // Перевіряємо коректність індексу
   if (index < 0 || index >= size()) {
     throw std::out_of_range("Index out of range");
   }
@@ -103,7 +136,6 @@ const T& DoubleSingleList<T>::get(int index) const {
 
 template <typename T>
 void DoubleSingleList<T>::insert(const T& data, int index) {
-  // Перевіряємо коректність індексу
   if (index < 0 || index > size()) {
     throw std::out_of_range("Index out of range");
   }
@@ -127,7 +159,6 @@ void DoubleSingleList<T>::insert(const T& data, int index) {
 
 template <typename T>
 void DoubleSingleList<T>::remove(int index) {
-  // Перевіряємо коректність індексу
   if (index < 0 || index >= size()) {
     throw std::out_of_range("Index out of range");
   }

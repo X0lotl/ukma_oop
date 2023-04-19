@@ -22,8 +22,10 @@ int main() {
   std::cout << "Таблиця міст:\n" << citiesUsingArray << std::endl;
 
   std::cout << "2-ий елемент таблиці: " << citiesUsingArray[1] << std::endl;
+  citiesUsingArray[1].setName("Test");
+  std::cout << "Змінимо ім'я другого елементу в таблиці на 'Test': " << citiesUsingArray[1] << std::endl;
 
-  std::cout << "\n\n ---- Тестування 2 завдання ---- " << std::endl;
+  std::cout << "\n\n\n\n ---- Тестування 2 завдання ---- " << std::endl;
 
   Cities citiesSorted(5);
 
@@ -36,7 +38,7 @@ int main() {
   std::cout << "Таблиця міст в відсортованому порядку використовуючи addCity():\n" << citiesSorted << std::endl;
 
 
-  std::cout << "\n\n ---- Тестування 3 завдання ---- " << std::endl;
+  std::cout << "\n\n\n\n ---- Тестування 3 завдання ---- " << std::endl;
 
   std::cout << "Таблиця відсортована за назвами міст: " << citiesSorted << std::endl;
 
@@ -49,7 +51,7 @@ int main() {
   citiesSorted.sortByAlphabet();
   std::cout << "Повернення до сортування за назвами: " << citiesSorted << std::endl;
 
-  std::cout << "\n\n ---- Тестування 4 завдання ----" << std::endl;
+  std::cout << "\n\n\n\n ---- Тестування 4 завдання ----" << std::endl;
 
   Fraction fractions[5] = {
     Fraction(5, 10),
@@ -66,7 +68,7 @@ int main() {
   }
 
 
-  std::cout << "\n\n ---- Тестування 5 завдання ---- " << std::endl;
+  std::cout << "\n\n\n\n ---- Тестування 5 завдання ---- " << std::endl;
 
   Fraction f1(2, 3);
   Fraction f2(4, 6);
@@ -95,7 +97,7 @@ int main() {
   std::cout << "f1 > f2: " << (f1 > f2) << std::endl;
   std::cout << "f1 < f2: " << (f1 < f2) << std::endl;
 
-  std::cout << "\n\n ---- Тестування 6 завдання ----" << std::endl;
+  std::cout << "\n\n\n\n ---- Тестування 6 завдання ----" << std::endl;
 
   Fraction fraction1(3, 5);
   double decimal = fraction1.toDecimal();
@@ -103,14 +105,15 @@ int main() {
   Fraction fraction3(decimal);
 
   std::cout << "f1: " << fraction1 << std::endl;
-  std::cout << "f1 as decimal: " << decimal << std::endl;
-  std::cout << "f2 (from decimal): " << fraction2 << std::endl;
-  std::cout << "f3 (constructed from decimal): " << fraction3 << std::endl;
+  std::cout << "f1 в десятковому дробі: " << decimal << std::endl;
+  std::cout << "f2 з десяткового дробу (функція): " << fraction2 << std::endl;
+  std::cout << "f3 з десяткового дробу (конструктор) : " << fraction3 << std::endl;
 
-  std::cout << "\n\n ---- Тестування 7 завдання ----" << std::endl;
-  std::cout << "Тестування завдання неможливе оскільки полягає в створені інтерфейсу (дивіться клас DoubleList)" << std::endl;
+  std::cout << "\n\n\n\n ---- Тестування 7 завдання ----" << std::endl;
+  std::cout << "Тестування завдання неможливе оскільки полягає в створені інтерфейсу (дивіться клас DoubleList)"
+            << std::endl;
 
-  std::cout << "\n\n ---- Тестування 8 завдання ----" << std::endl;
+  std::cout << "\n\n\n\n ---- Тестування 8 завдання ----" << std::endl;
 
   DoubleSingleList<int> list;
 
@@ -137,7 +140,7 @@ int main() {
   std::cout << "Список після видалення останніх двох: " << list << std::endl;
 
 
-  std::cout << "\n\n ---- Тестування 9 завдання ---- " << std::endl;
+  std::cout << "\n\n\n\n ---- Тестування 9 завдання ---- " << std::endl;
   DoubleCyclicList<int> cyclicList;
 
   cyclicList.insertFront(1);
@@ -162,13 +165,54 @@ int main() {
 
   std::cout << "Список після видалення з кінця: " << cyclicList << std::endl;
 
-  std::cout << "\n\n ---- Тестування 10 завдання ---- " << std::endl;
+  std::cout << "\n\n\n\n ---- Тестування 10 завдання ---- " << std::endl;
 
   CitiesList<DoubleSingleList<City>> citiesSingleList;
 
-  citiesSingleList.addCity(City("Kyiv", 100));
+  citiesSingleList.addCity(City("Kyiv", 2884000));
+  citiesSingleList.addCity(City("Kharkiv", 1441000));
+  citiesSingleList.addCity(City("Odesa", 993000));
+  citiesSingleList.addCity(City("Dnipro", 957000));
+  citiesSingleList.addCity(City("Lviv", 721000));
 
-  std::cout << citiesSingleList << std::endl;
+  std::cout << "Таблиця міст використовуючи Double Single List:\n" << citiesSingleList << std::endl;
+
+  citiesSingleList.sortByAlphabet();
+
+  std::cout << "\nТаблиця відсортована за назвами міст: " << citiesSingleList << std::endl;
+
+  citiesSingleList.sortByPopulationDescending();
+  std::cout << "\nТаблиця відсотована за популяцією міст (спадання): " << citiesSingleList << std::endl;
+
+  citiesSingleList.sortByPopulationAscending();
+  std::cout << "\nТаблиця вісортована за популяцією міст (зростанння): " << citiesSingleList << std::endl;
+
+  citiesSingleList.sortByAlphabet();
+  std::cout << "\nПовернення до сортування за назвами: " << citiesSingleList << std::endl;
+
+
+  CitiesList<DoubleCyclicList<City>> citiesCyclicList;
+
+  citiesCyclicList.addCity(City("Kyiv", 2884000));
+  citiesCyclicList.addCity(City("Kharkiv", 1441000));
+  citiesCyclicList.addCity(City("Odesa", 993000));
+  citiesCyclicList.addCity(City("Dnipro", 957000));
+  citiesCyclicList.addCity(City("Lviv", 721000));
+
+  std::cout << "\n\nТаблиця міст використовуючи Double Cyclic List:\n" << citiesCyclicList << std::endl;
+
+  citiesCyclicList.sortByAlphabet();
+  std::cout << "\nТаблиця відсортована за назвами міст: " << citiesCyclicList << std::endl;
+
+  citiesCyclicList.sortByPopulationDescending();
+  std::cout << "\nТаблиця відсотована за популяцією міст (спадання): " << citiesCyclicList << std::endl;
+
+  citiesCyclicList.sortByPopulationAscending();
+  std::cout << "\nТаблиця вісортована за популяцією міст (зростанння): " << citiesCyclicList << std::endl;
+
+  citiesCyclicList.sortByAlphabet();
+  std::cout << "\nПовернення до сортування за назвами: " << citiesCyclicList << std::endl;
+
 
   return 0;
 }

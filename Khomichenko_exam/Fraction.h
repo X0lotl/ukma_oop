@@ -51,8 +51,8 @@ public:
   static Fraction fromDecimal(double decimal, int precision = 1000);
 
 private:
-  int p; // чисельник
-  int q; // знаменник
+  int p;
+  int q;
 
   static int gcd(int a, int b);
 

@@ -30,7 +30,9 @@ public:
 
   void remove(int index);
 
+  DoubleSingleList &operator=(const DoubleSingleList &other);
 };
+
 
 template
 class DoubleSingleList<int>;

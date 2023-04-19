@@ -17,7 +17,15 @@ public:
 
   void deleteFront() override;
   void deleteBack() override;
+
+  const T &get(int index) const;
+
+  void insert(const T &data, int index);
+
+  void remove(int index);
+
+  DoubleCyclicList &operator=(const DoubleCyclicList &other);
 };
 
 template class DoubleCyclicList<int>;
-//template class DoubleCyclicList<City>;
+template class DoubleCyclicList<City>;
